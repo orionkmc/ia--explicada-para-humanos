@@ -1,0 +1,674 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Infografía IA: Impacto, Evolución y Tendencias</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        body {
+            font-family: 'Inter', sans-serif; /* Tailwind usa Inter por defecto si está disponible, o sans-serif */
+        }
+        .chart-container {
+            position: relative;
+            width: 100%;
+            margin-left: auto;
+            margin-right: auto;
+            padding: 1rem;
+            background-color: white;
+            border-radius: 0.5rem;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+        }
+        .section-title {
+            font-size: 1.875rem; /* text-3xl */
+            font-weight: 700; /* bold */
+            color: #333333; /* Gris oscuro principal */
+            margin-bottom: 1.5rem; /* mb-6 */
+            text-align: center;
+        }
+        .card-title {
+            font-size: 1.25rem; /* text-xl */
+            font-weight: 600; /* semibold */
+            color: #333333;
+            margin-bottom: 1rem; /* mb-4 */
+        }
+        .stat-big-number {
+            font-size: 3rem; /* text-5xl */
+            font-weight: 800; /* extrabold */
+            color: #87CEEB; /* Azul Cielo de la paleta */
+            text-align: center;
+        }
+        .flowchart-step {
+            border: 2px solid #87CEEB; /* Azul Cielo */
+            padding: 1rem;
+            border-radius: 0.5rem;
+            text-align: center;
+            background-color: #F0F8FF; /* AliceBlue, un azul muy claro */
+            min-height: 100px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+        .flowchart-arrow {
+            font-size: 2rem;
+            color: #FF8C00; /* Naranja */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .timeline-item {
+            position: relative;
+            padding-bottom: 2rem;
+            padding-left: 2rem;
+            border-left: 3px solid #87CEEB;
+        }
+        .timeline-dot {
+            position: absolute;
+            left: -0.60rem; /* Ajustar para centrar el punto en la línea */
+            top: 0;
+            height: 1rem;
+            width: 1rem;
+            background-color: #FF8C00; /* Naranja */
+            border-radius: 50%;
+            border: 3px solid white;
+        }
+        .timeline-date {
+            font-weight: 600;
+            color: #FF8C00; /* Naranja */
+        }
+         /* Paleta de Colores Seleccionada: BRIGHT & BOLD */
+        /* Naranja: #FF8C00 */
+        /* Amarillo: #FFD700 */
+        /* Verde Lima: #ADFF2F */
+        /* Azul Cielo: #87CEEB */
+        /* Rosa Fuerte: #FF69B4 */
+        /* Gris oscuro para texto principal: #333333 */
+        /* Gris claro para fondos secundarios: #F0F0F0 o bg-slate-100 */
+        /* Blanco: #FFFFFF */
+    </style>
+</head>
+<body class="bg-slate-100 text-gray-800">
+
+    <!-- 
+        Plan Narrativo y Estructura:
+        La infografía explora la IA basándose en "IA Explicada a los Humanos" de Jordi Torres,
+        presentando sus conceptos como tendencias de mercado e impactos.
+        Secciones:
+        1. Introducción: La Revolución Invisible de la IA.
+        2. Pilares del Avance: Motores de Transformación.
+        3. Evolución de la IA: Paradigmas del Mercado.
+        4. IA Generativa: Nueva Frontera Creativa.
+        5. Impacto Actual: Empleo y Sociedad.
+        6. Desafíos y Camino a Seguir: Navegando la Era de la IA.
+        7. Conclusión: Coevolución Humano-IA.
+
+        Selección de Visualizaciones (Resumen):
+        - S1: Texto destacado, Diagrama de Flujo (HTML/CSS) - Informar/Organizar.
+        - S2: Diagrama Piramidal (HTML/CSS), Línea de Tiempo simple (HTML/CSS) - Organizar/Cambio.
+        - S3: Línea de Tiempo Avanzada (HTML/CSS), Gráfico de Barras (Chart.js) - Organizar/Comparar.
+        - S4: Gráfico de Donut (Chart.js), Lista Estilizada (HTML/CSS) - Comparar/Informar.
+        - S5: Gráfico de Barras (Chart.js), Pictograma (HTML/Unicode) - Comparar/Informar.
+        - S6: Diagrama de Flujo (HTML/CSS), Gráfico de Radar (Chart.js) - Organizar/Comparar.
+        - S7: Cita Destacada (HTML/CSS), Iconografía - Informar.
+        Todas las visualizaciones implementadas sin SVG y sin Mermaid JS, usando Canvas para Chart.js y HTML/CSS para diagramas.
+
+        Paleta de Colores Seleccionada: BRIGHT & BOLD
+        (Naranja: #FF8C00, Amarillo: #FFD700, Verde Lima: #ADFF2F, Azul Cielo: #87CEEB, Rosa Fuerte: #FF69B4)
+
+        Confirmación: Ni Mermaid JS ni SVG han sido utilizados en esta infografía.
+    -->
+
+    <header class="bg-[#87CEEB] text-white p-6 shadow-md sticky top-0 z-50">
+        <div class="container mx-auto text-center">
+            <h1 class="text-3xl md:text-4xl font-bold">La Inteligencia Artificial: Impacto, Evolución y Tendencias</h1>
+            <p class="text-lg md:text-xl mt-2">Perspectivas basadas en "IA Explicada a los Humanos" de Jordi Torres</p>
+        </div>
+    </header>
+
+    <main class="container mx-auto p-4 md:p-8">
+
+        <section id="intro" class="mb-12 pt-16">
+            <h2 class="section-title">1. La Revolución Invisible de la IA</h2>
+            <div class="bg-white rounded-lg shadow-md p-6 mb-6">
+                <p class="text-lg leading-relaxed mb-4">
+                    La Inteligencia Artificial (IA) se ha integrado profundamente en nuestra vida cotidiana, a menudo de manera imperceptible. Desde los sistemas que nos recomiendan contenido en plataformas de streaming hasta los algoritmos que mejoran las fotos en nuestros móviles, la IA está transformando la forma en que interactuamos con la tecnología y el mundo. Esta "revolución invisible" subraya la importancia de comprender sus fundamentos y su alcance.
+                </p>
+                <p class="text-lg leading-relaxed mb-6">
+                    Según Jordi Torres, la IA puede definirse como "el esfuerzo por automatizar tareas «intelectuales» mediante una máquina, que, gobernada por un algoritmo, es capaz de ejecutar por sí misma funciones que generalmente requieren de la participación de la inteligencia humana". Su presencia es cada vez más evidente, con herramientas como ChatGPT capturando la atención global.
+                </p>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 items-center mb-6">
+                <div class="flowchart-step">
+                    <span class="text-4xl mb-2">👤</span>
+                    <h3 class="font-semibold text-lg">Usuario</h3>
+                    <p class="text-sm">Interactúa con dispositivos y aplicaciones.</p>
+                </div>
+                <div class="flowchart-arrow hidden md:block">➡️</div>
+                <div class="md:hidden flowchart-arrow text-center my-2">⬇️</div>
+                <div class="flowchart-step">
+                    <span class="text-4xl mb-2">📱</span>
+                    <h3 class="font-semibold text-lg">Aplicaciones con IA</h3>
+                    <p class="text-sm">(Streaming, Compras, Navegación, Redes Sociales)</p>
+                </div>
+                <div class="flowchart-arrow hidden md:block">➡️</div>
+                <div class="md:hidden flowchart-arrow text-center my-2">⬇️</div>
+                <div class="flowchart-step">
+                    <span class="text-4xl mb-2">💡</span>
+                    <h3 class="font-semibold text-lg">Experiencia Mejorada</h3>
+                    <p class="text-sm">Personalización, eficiencia, nuevas capacidades.</p>
+                </div>
+            </div>
+             <div class="bg-white rounded-lg shadow-md p-6">
+                <p class="text-center text-2xl font-semibold text-[#FF8C00]">
+                    "La IA ya no es ciencia ficción, es una realidad tangible que moldea nuestro presente."
+                </p>
+            </div>
+        </section>
+
+        <section id="pilares" class="mb-12 pt-16">
+            <h2 class="section-title">2. Pilares del Avance de la IA: Motores de Transformación</h2>
+            <div class="bg-white rounded-lg shadow-md p-6 mb-6">
+                <p class="text-lg leading-relaxed mb-4">
+                    El rápido progreso de la IA se sustenta en la convergencia y retroalimentación de tres pilares fundamentales. Estos elementos no solo han impulsado la investigación, sino que también han habilitado la creación de aplicaciones de IA cada vez más sofisticadas y con mayor impacto en diversos sectores del mercado.
+                </p>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+                <div class="p-6 bg-white rounded-lg shadow-md text-center border-t-4 border-[#FF8C00]">
+                    <h3 class="card-title text-[#FF8C00]">Avances Algorítmicos</h3>
+                    <p>Desarrollo de nuevas técnicas y modelos matemáticos (ej. redes neuronales profundas) que permiten a las máquinas aprender de forma más eficiente y realizar tareas complejas.</p>
+                </div>
+                <div class="p-6 bg-white rounded-lg shadow-md text-center border-t-4 border-[#FFD700]">
+                    <h3 class="card-title text-[#FFD700]">Diluvio de Datos (Big Data)</h3>
+                    <p>La disponibilidad de enormes volúmenes de datos digitales generados por la actividad online, sensores (IoT) y otras fuentes, cruciales para entrenar los modelos de IA.</p>
+                </div>
+                <div class="p-6 bg-white rounded-lg shadow-md text-center border-t-4 border-[#ADFF2F]">
+                    <h3 class="card-title text-[#ADFF2F]">Poder de Computación</h3>
+                    <p>Hardware especializado (GPUs, TPUs) y la supercomputación, que proporcionan la capacidad de procesamiento necesaria para entrenar y ejecutar algoritmos de IA complejos con grandes datasets.</p>
+                </div>
+            </div>
+            <div class="bg-white rounded-lg shadow-md p-6">
+                 <h3 class="card-title text-center">Sinergia de los Pilares: Hitos Clave</h3>
+                 <ul class="list-disc list-inside space-y-2 text-gray-700">
+                    <li><strong class="text-[#87CEEB]">Década de 1950:</strong> Primeros conceptos de redes neuronales (Algoritmos).</li>
+                    <li><strong class="text-[#87CEEB]">Década de 2000:</strong> Popularización y mejora de GPUs para gráficos, luego adaptadas para IA (Computación).</li>
+                    <li><strong class="text-[#87CEEB]">Década de 2010:</strong> Explosión del Big Data con la Web 2.0 y móviles (Datos).</li>
+                    <li><strong class="text-[#87CEEB]">Actualidad:</strong> La combinación de algoritmos avanzados, grandes volúmenes de datos y una enorme capacidad de cómputo impulsa la revolución de la IA que vivimos hoy.</li>
+                 </ul>
+            </div>
+        </section>
+
+        <section id="evolucion" class="mb-12 pt-16">
+            <h2 class="section-title">3. Evolución de la IA: Un Recorrido por los Paradigmas</h2>
+            <div class="bg-white rounded-lg shadow-md p-6 mb-6">
+                <p class="text-lg leading-relaxed mb-4">
+                    La Inteligencia Artificial ha evolucionado a través de distintos enfoques o "paradigmas", cada uno marcado por avances conceptuales y tecnológicos que han expandido sus capacidades y aplicaciones en el mercado. Comprender esta evolución nos ayuda a contextualizar el estado actual de la IA y sus futuras trayectorias. Jordi Torres identifica cuatro paradigmas principales:
+                </p>
+            </div>
+            
+            <div class="space-y-8 mb-8">
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <p class="timeline-date">Paradigma 1: IA Basada en Conocimiento (Hasta ~2000s)</p>
+                    <h3 class="text-xl font-semibold text-gray-800 mt-1">Sistemas Expertos y Lógica Simbólica</h3>
+                    <p class="text-gray-600 mt-1">La IA se programaba con reglas explícitas y conocimiento humano codificado "a mano". Útil para tareas bien definidas.</p>
+                    <p class="text-sm text-gray-500 mt-1">Hito: Deep Blue de IBM derrota a Kaspárov en ajedrez (1997).</p>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <p class="timeline-date">Paradigma 2: IA Basada en Datos (Desde ~2010s)</p>
+                    <h3 class="text-xl font-semibold text-gray-800 mt-1">Machine Learning y Redes Neuronales</h3>
+                    <p class="text-gray-600 mt-1">La IA aprende patrones a partir de grandes cantidades de datos etiquetados, impulsada por Big Data y GPUs.</p>
+                    <p class="text-sm text-gray-500 mt-1">Hitos: ImageNet (AlexNet, 2012), AlphaGo de DeepMind (2016).</p>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <p class="timeline-date">Paradigma 3: IA Basada en Experiencia (Desde ~2017s)</p>
+                    <h3 class="text-xl font-semibold text-gray-800 mt-1">Aprendizaje por Refuerzo</h3>
+                    <p class="text-gray-600 mt-1">La IA aprende por prueba y error, interactuando con un entorno (real o simulado) para alcanzar objetivos, sin datos previos.</p>
+                    <p class="text-sm text-gray-500 mt-1">Hitos: AlphaZero (2018), AlphaFold (2020) para plegamiento de proteínas.</p>
+                </div>
+                <div class="timeline-item border-l-0 pl-0"> <div class="timeline-dot"></div>
+                    <p class="timeline-date">Paradigma 4: IA Basada en "Fuerza Bruta" (Desde ~2018s)</p>
+                    <h3 class="text-xl font-semibold text-gray-800 mt-1">Grandes Modelos de Lenguaje (LLMs)</h3>
+                    <p class="text-gray-600 mt-1">Modelos masivos con miles de millones de parámetros, entrenados con ingentes cantidades de datos y supercomputación a gran escala.</p>
+                    <p class="text-sm text-gray-500 mt-1">Hitos: GPT-3 (2020), ChatGPT (2022), PaLM.</p>
+                </div>
+            </div>
+
+            <div class="chart-container h-[400px] md:h-[500px] max-h-[500px]">
+                <canvas id="modelosParamsChart"></canvas>
+            </div>
+            <p class="text-center text-sm text-gray-600 mt-2">El gráfico ilustra el crecimiento exponencial en el tamaño (número de parámetros) de los modelos de lenguaje, una característica clave del paradigma de "fuerza bruta".</p>
+        </section>
+
+        <section id="generativa" class="mb-12 pt-16">
+            <h2 class="section-title">4. IA Generativa: La Nueva Frontera Creativa y de Productividad</h2>
+            <div class="bg-white rounded-lg shadow-md p-6 mb-6">
+                <p class="text-lg leading-relaxed mb-4">
+                    La IA Generativa representa uno de los avances más impactantes y visibles de la inteligencia artificial, con la capacidad de crear contenido original como texto, imágenes, audio y código. Herramientas como DALL-E y ChatGPT han democratizado el acceso a estas tecnologías, abriendo un universo de aplicaciones y transformando industrias creativas y de conocimiento.
+                </p>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-start">
+                <div class="chart-container h-[350px] md:h-[400px] max-h-[400px]">
+                    <canvas id="chatGPTAdoptionChart"></canvas>
+                    <p class="text-center text-sm text-gray-600 mt-2">ChatGPT alcanzó 100 millones de usuarios en un tiempo récord, demostrando el enorme interés y potencial de la IA generativa.</p>
+                </div>
+                <div class="bg-white rounded-lg shadow-md p-6">
+                    <h3 class="card-title text-[#FF8C00]">Aplicaciones Clave de la IA Generativa</h3>
+                    <ul class="space-y-3">
+                        <li class="flex items-start">
+                            <span class="text-2xl mr-3 text-[#FF8C00]">✍️</span>
+                            <div>
+                                <h4 class="font-semibold">Creación de Texto</h4>
+                                <p class="text-sm text-gray-600">Artículos, correos, guiones, poesía, resúmenes.</p>
+                            </div>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="text-2xl mr-3 text-[#FFD700]">🖼️</span>
+                            <div>
+                                <h4 class="font-semibold">Generación de Imágenes y Arte</h4>
+                                <p class="text-sm text-gray-600">Ilustraciones, fotografías realistas, diseños conceptuales.</p>
+                            </div>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="text-2xl mr-3 text-[#ADFF2F]">💻</span>
+                            <div>
+                                <h4 class="font-semibold">Desarrollo de Código</h4>
+                                <p class="text-sm text-gray-600">Generación de snippets, depuración, creación de software.</p>
+                            </div>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="text-2xl mr-3 text-[#87CEEB]">🎶</span>
+                            <div>
+                                <h4 class="font-semibold">Composición Musical y Audio</h4>
+                                <p class="text-sm text-gray-600">Creación de melodías, bandas sonoras, efectos de sonido.</p>
+                            </div>
+                        </li>
+                         <li class="flex items-start">
+                            <span class="text-2xl mr-3 text-[#FF69B4]">🌐</span>
+                            <div>
+                                <h4 class="font-semibold">Traducción Avanzada y Localización</h4>
+                                <p class="text-sm text-gray-600">Traducciones más naturales y contextualmente precisas.</p>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section id="impacto" class="mb-12 pt-16">
+            <h2 class="section-title">5. Impacto Actual: Transformando el Empleo y la Sociedad</h2>
+            <div class="bg-white rounded-lg shadow-md p-6 mb-6">
+                <p class="text-lg leading-relaxed mb-4">
+                    La IA no es solo una proeza tecnológica; es una fuerza que está remodelando activamente el mercado laboral y las estructuras sociales. Si bien ofrece enormes oportunidades de productividad y nuevas capacidades, también plantea desafíos significativos, especialmente en términos de adaptación de la fuerza laboral y la necesidad de un rediseño educativo.
+                </p>
+                <p class="text-lg leading-relaxed">
+                    Un estudio encargado por OpenAI sugiere que una gran proporción de la fuerza laboral podría ver sus tareas afectadas por la IA generativa, impactando especialmente a los "trabajadores de cuello blanco" cuyas labores implican escritura, asesoramiento o resolución de problemas complejos.
+                </p>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-start">
+                <div class="chart-container h-[350px] md:h-[400px] max-h-[400px]">
+                    <canvas id="impactoLaboralChart"></canvas>
+                     <p class="text-center text-sm text-gray-600 mt-2">Estimaciones del impacto potencial de los LLMs en tareas laborales en EE.UU. (Fuente: Estudio OpenAI, adaptado).</p>
+                </div>
+                <div class="bg-white rounded-lg shadow-md p-6">
+                    <h3 class="card-title text-[#FF69B4]">Sectores y Profesiones en Transformación</h3>
+                    <p class="text-sm text-gray-700 mb-4">La IA está influyendo en diversos campos, exigiendo nuevas habilidades y redefiniendo roles:</p>
+                    <div class="space-y-4">
+                        <div class="flex items-center p-3 bg-rose-50 rounded-md">
+                            <span class="text-3xl mr-4">📝</span>
+                            <div><h4 class="font-semibold">Redacción, Legal y Consultoría</h4><p class="text-xs text-gray-600">Alto impacto en la generación de documentos y análisis.</p></div>
+                        </div>
+                        <div class="flex items-center p-3 bg-sky-50 rounded-md">
+                            <span class="text-3xl mr-4">💻</span>
+                            <div><h4 class="font-semibold">Programación e Ingeniería de Software</h4><p class="text-xs text-gray-600">Asistencia en codificación, pruebas y depuración.</p></div>
+                        </div>
+                        <div class="flex items-center p-3 bg-amber-50 rounded-md">
+                            <span class="text-3xl mr-4">🎨</span>
+                            <div><h4 class="font-semibold">Diseño Gráfico y Creación de Contenido</h4><p class="text-xs text-gray-600">Nuevas herramientas para la creatividad y producción.</p></div>
+                        </div>
+                        <div class="flex items-center p-3 bg-lime-50 rounded-md">
+                            <span class="text-3xl mr-4">🧑‍🏫</span>
+                            <div><h4 class="font-semibold">Educación</h4><p class="text-xs text-gray-600">Desafíos en la evaluación y oportunidades para personalizar el aprendizaje.</p></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="desafios" class="mb-12 pt-16">
+            <h2 class="section-title">6. Desafíos y el Camino a Seguir: Navegando la Era de la IA</h2>
+            <div class="bg-white rounded-lg shadow-md p-6 mb-6">
+                <p class="text-lg leading-relaxed mb-4">
+                   Para aprovechar el potencial de la IA y mitigar sus riesgos, es crucial abordar desafíos inherentes como la opacidad de los modelos ("caja negra") y los sesgos algorítmicos. Esto requiere un esfuerzo concertado en investigación para la Explicabilidad de la IA (XAI), así como un marco robusto de regulación y gobernanza. La educación ciudadana y la soberanía tecnológica también emergen como pilares fundamentales para un futuro de la IA que sea equitativo y beneficioso.
+                </p>
+            </div>
+             <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-start">
+                <div class="bg-white rounded-lg shadow-md p-6">
+                    <h3 class="card-title text-[#87CEEB]">Hacia un Desarrollo de IA Responsable</h3>
+                    <div class="space-y-3 text-sm">
+                        <div class="p-2 border-l-4 border-[#FF8C00] bg-orange-50"><strong>Investigación Fundamental:</strong> Continuar explorando los límites y capacidades de la IA.</div>
+                        <div class="p-2 border-l-4 border-[#FFD700] bg-yellow-50"><strong>Diseño Ético:</strong> Integrar XAI y mitigación de sesgos desde el inicio.</div>
+                        <div class="p-2 border-l-4 border-[#ADFF2F] bg-lime-50"><strong>Entrenamiento Transparente:</strong> Documentar datos y procesos de entrenamiento.</div>
+                        <div class="p-2 border-l-4 border-[#87CEEB] bg-sky-50"><strong>Validación Rigurosa:</strong> Pruebas exhaustivas para seguridad y equidad.</div>
+                        <div class="p-2 border-l-4 border-[#FF69B4] bg-pink-50"><strong>Regulación y Gobernanza:</strong> Establecer marcos legales (ej. Ley de IA de la UE) y éticos.</div>
+                        <div class="p-2 border-l-4 border-purple-400 bg-purple-50"><strong>Educación Ciudadana:</strong> Fomentar la comprensión crítica de la IA.</div>
+                        <div class="p-2 border-l-4 border-teal-400 bg-teal-50"><strong>Despliegue y Monitoreo:</strong> Implementación ética con supervisión continua.</div>
+                    </div>
+                </div>
+                <div class="chart-container h-[400px] md:h-[450px] max-h-[450px]">
+                    <canvas id="focoGlobalIAChart"></canvas>
+                    <p class="text-center text-sm text-gray-600 mt-2">Comparación hipotética del foco en diferentes aspectos de la IA entre regiones clave (basado en tendencias generales del libro).</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="conclusion" class="pt-16 pb-8">
+            <h2 class="section-title">7. Conclusión: La Coevolución Humano-IA</h2>
+            <div class="bg-white rounded-lg shadow-md p-8 mb-6 text-center">
+                <p class="text-xl leading-relaxed mb-6">
+                    La Inteligencia Artificial actual, aunque extraordinariamente hábil en tareas específicas, opera con "habilidades sin comprensión" profunda del mundo. No obstante, nuestra interdependencia con la IA es una realidad creciente, embarcándonos en un paradigma coevolutivo.
+                </p>
+                <blockquote class="text-2xl font-semibold italic text-[#333333] border-l-4 border-[#FF8C00] pl-4 py-2 mb-6 inline-block">
+                    "El futuro es una elección que tomamos conjuntamente y no algo que simplemente sucede."
+                    <cite class="block text-lg not-italic font-normal text-gray-600 mt-2">- Atribuido a reflexiones en "IA Explicada a los Humanos"</cite>
+                </blockquote>
+                <p class="text-lg leading-relaxed mb-6">
+                    Navegar esta era requiere una regulación adecuada, una ciudadanía educada y una participación activa en las decisiones colectivas sobre el rumbo de esta tecnología transformadora. Comprender la IA es el primer paso para asegurar que su desarrollo beneficie a toda la humanidad.
+                </p>
+                <div class="flex justify-center space-x-6 text-5xl text-[#87CEEB]">
+                    <span>🤝</span>
+                    <span>🧠</span>
+                    <span>🤖</span>
+                    <span>🌱</span>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="text-center p-6 bg-gray-800 text-gray-300 text-sm">
+        Infografía basada en el libro "La Inteligencia Artificial Explicada a los Humanos" de Jordi Torres.
+        <br/>Diseño y desarrollo con fines ilustrativos.
+    </footer>
+
+    <script>
+        function wrapLabel(label, maxWidth = 16) {
+            if (typeof label !== 'string' || label.length <= maxWidth) {
+                return label;
+            }
+            const words = label.split(' ');
+            let lines = [];
+            let currentLine = '';
+            for (const word of words) {
+                if ((currentLine + word).length > maxWidth && currentLine.length > 0) {
+                    lines.push(currentLine.trim());
+                    currentLine = word + ' ';
+                } else {
+                    currentLine += word + ' ';
+                }
+            }
+            if (currentLine.trim().length > 0) {
+                lines.push(currentLine.trim());
+            }
+            return lines.length > 0 ? lines : [label];
+        }
+
+        const tooltipTitleCallback = function(tooltipItems) {
+            const item = tooltipItems[0];
+            let label = item.chart.data.labels[item.dataIndex];
+            if (Array.isArray(label)) {
+              return label.join(' ');
+            }
+            return label;
+        };
+        
+        const defaultChartOptions = {
+            responsive: true,
+            maintainAspectRatio: false,
+            plugins: {
+                tooltip: {
+                    callbacks: {
+                        title: tooltipTitleCallback
+                    },
+                    backgroundColor: 'rgba(0,0,0,0.7)',
+                    titleFont: { size: 14 },
+                    bodyFont: { size: 12 },
+                    padding: 10
+                },
+                legend: {
+                    labels: {
+                        font: { size: 12 },
+                        color: '#333333'
+                    }
+                }
+            },
+            scales: {
+                x: {
+                    ticks: { color: '#333333', font: {size: 10} },
+                    grid: { display: false }
+                },
+                y: {
+                    ticks: { color: '#333333', font: {size: 10} },
+                    grid: { color: '#e0e0e0' }
+                }
+            }
+        };
+
+        // Gráfico: Crecimiento de Parámetros de Modelos
+        const modelosParamsCtx = document.getElementById('modelosParamsChart').getContext('2d');
+        new Chart(modelosParamsCtx, {
+            type: 'bar',
+            data: {
+                labels: ['GPT-1 (2018)', 'GPT-2 (2019)', 'GPT-3 (2020)', 'PaLM (2022)'],
+                datasets: [{
+                    label: 'Número de Parámetros (en Billones)',
+                    data: [0.117, 1.5, 175, 540], // GPT-1 en Billones, el resto ya está en Billones
+                    backgroundColor: ['#FFD700', '#FF8C00', '#FF69B4', '#87CEEB'],
+                    borderColor: ['#FFD700', '#FF8C00', '#FF69B4', '#87CEEB'],
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                ...defaultChartOptions,
+                scales: {
+                    ...defaultChartOptions.scales,
+                    y: {
+                        ...defaultChartOptions.scales.y,
+                        type: 'logarithmic', // Escala logarítmica para manejar grandes diferencias
+                        title: { display: true, text: 'Parámetros (Billones - Escala Log)', color: '#333333' }
+                    },
+                     x: {
+                        ...defaultChartOptions.scales.x,
+                        title: { display: true, text: 'Modelo y Año', color: '#333333' }
+                    }
+                },
+                plugins: {
+                    ...defaultChartOptions.plugins,
+                    title: {
+                        display: true,
+                        text: 'Crecimiento Exponencial en Parámetros de LLMs',
+                        font: { size: 16 },
+                        color: '#333333',
+                        padding: { top: 10, bottom: 20 }
+                    }
+                }
+            }
+        });
+
+        // Gráfico: Adopción de ChatGPT
+        const chatGPTAdoptionCtx = document.getElementById('chatGPTAdoptionChart').getContext('2d');
+        new Chart(chatGPTAdoptionCtx, {
+            type: 'doughnut',
+            data: {
+                labels: ['ChatGPT', 'TikTok', 'Instagram', 'Spotify'],
+                datasets: [{
+                    label: 'Meses para alcanzar 100M usuarios',
+                    data: [2, 9, 30, 55],
+                    backgroundColor: ['#ADFF2F', '#FF69B4', '#FFD700', '#87CEEB'],
+                    hoverOffset: 4
+                }]
+            },
+            options: {
+                 ...defaultChartOptions,
+                 cutout: '60%',
+                 plugins: {
+                    ...defaultChartOptions.plugins,
+                    title: {
+                        display: true,
+                        text: 'Rapidez de Adopción: Meses a 100M Usuarios',
+                        font: { size: 16 },
+                        color: '#333333',
+                        padding: { top: 10, bottom: 20 }
+                    },
+                    legend: {
+                        position: 'bottom'
+                    }
+                }
+            }
+        });
+
+        // Gráfico: Impacto Laboral
+        const impactoLaboralCtx = document.getElementById('impactoLaboralChart').getContext('2d');
+        new Chart(impactoLaboralCtx, {
+            type: 'bar',
+            data: {
+                labels: [
+                    wrapLabel('Al menos 10% de tareas afectadas', 20), 
+                    wrapLabel('Al menos 50% de tareas afectadas', 20)
+                ],
+                datasets: [{
+                    label: '% de la Fuerza Laboral de EE.UU.',
+                    data: [80, 19],
+                    backgroundColor: ['#FF8C00', '#FF69B4'],
+                    borderColor: ['#FF8C00', '#FF69B4'],
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                ...defaultChartOptions,
+                indexAxis: 'y', // Barras horizontales para mejor lectura de etiquetas largas
+                scales: {
+                     x: {
+                        ...defaultChartOptions.scales.x,
+                        title: { display: true, text: '% Fuerza Laboral', color: '#333333' },
+                        max: 100
+                    },
+                    y: {
+                        ...defaultChartOptions.scales.y,
+                        ticks: {
+                            ...defaultChartOptions.scales.y.ticks,
+                             autoSkip: false // Muestra todas las etiquetas
+                        }
+                    }
+                },
+                plugins: {
+                    ...defaultChartOptions.plugins,
+                     title: {
+                        display: true,
+                        text: 'Impacto Potencial de LLMs en Tareas Laborales (EE.UU.)',
+                        font: { size: 14 },
+                        color: '#333333',
+                        padding: { top: 10, bottom: 20 }
+                    },
+                    legend: { display: false }
+                }
+            }
+        });
+        
+        // Gráfico: Foco Global en IA
+        const focoGlobalIACtx = document.getElementById('focoGlobalIAChart').getContext('2d');
+        new Chart(focoGlobalIACtx, {
+            type: 'radar',
+            data: {
+                labels: [
+                    wrapLabel('Innovación Tecnológica', 15), 
+                    wrapLabel('Regulación Estricta', 15), 
+                    'Ética y DDHH', 
+                    wrapLabel('Soberanía Digital', 15), 
+                    wrapLabel('Adopción de Mercado', 15), 
+                    wrapLabel('Educación Ciudadana', 15)
+                ],
+                datasets: [
+                    {
+                        label: 'Europa (Foco Estimado)',
+                        data: [6, 9, 8, 8, 5, 7], // Valores hipotéticos 0-10
+                        fill: true,
+                        backgroundColor: 'rgba(135, 206, 235, 0.2)', // Azul Cielo transparente
+                        borderColor: '#87CEEB',
+                        pointBackgroundColor: '#87CEEB',
+                        pointBorderColor: '#fff',
+                        pointHoverBackgroundColor: '#fff',
+                        pointHoverBorderColor: '#87CEEB'
+                    },
+                    {
+                        label: 'EE.UU. (Foco Estimado)',
+                        data: [9, 5, 6, 6, 9, 6], // Valores hipotéticos 0-10
+                        fill: true,
+                        backgroundColor: 'rgba(255, 140, 0, 0.2)', // Naranja transparente
+                        borderColor: '#FF8C00',
+                        pointBackgroundColor: '#FF8C00',
+                        pointBorderColor: '#fff',
+                        pointHoverBackgroundColor: '#fff',
+                        pointHoverBorderColor: '#FF8C00'
+                    }
+                ]
+            },
+            options: {
+                ...defaultChartOptions,
+                scales: {
+                    r: {
+                        angleLines: { display: true, color: '#cccccc' },
+                        suggestedMin: 0,
+                        suggestedMax: 10,
+                        pointLabels: {
+                            font: { size: 10 },
+                            color: '#333333'
+                        },
+                        grid: { color: '#dddddd' },
+                        ticks: {
+                            backdropColor: 'rgba(255,255,255,0.8)',
+                             color: '#555555'
+                        }
+                    }
+                },
+                plugins: {
+                    ...defaultChartOptions.plugins,
+                    title: {
+                        display: true,
+                        text: 'Foco Estratégico Estimado en IA (Regiones Clave)',
+                        font: { size: 16 },
+                        color: '#333333',
+                        padding: { top: 10, bottom: 20 }
+                    },
+                    legend: {
+                        position: 'top'
+                    }
+                }
+            }
+        });
+
+        // Smooth scroll for navigation (optional, if nav links were added)
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href');
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    // Calculate offset for sticky header
+                    const headerOffset = document.querySelector('header').offsetHeight || 70;
+                    const elementPosition = targetElement.getBoundingClientRect().top;
+                    const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+                
+                    window.scrollTo({
+                        top: offsetPosition,
+                        behavior: "smooth"
+                    });
+                }
+            });
+        });
+
+    </script>
+</body>
+</html>
